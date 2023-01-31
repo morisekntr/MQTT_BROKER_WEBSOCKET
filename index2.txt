@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script> -->
+</head>
+<body>
+  <h1>MQTT Message</h1>
+  <script src="./mqtt.js"></script>
+  <form>
+    <label for="broker">Broker:</label>
+    <input type="text" id="broker" value="ws://localhost:1884">
+    <br>
+    <label for="topic">Topic:</label>
+    <input type="text" id="topic" value="test">
+    <br>
+    <button type="button" onclick="subscribe()">Subscribe</button>
+  </form>
+
+  <form>
+    <label for="message">Message:</label>
+    <input type="text" id="message" value="Hello MQTT">
+    <br>
+    <button type="button" onclick="publish()">Publish</button>
+  </form>
+
+  <div id="messageContainer"></div>
+
+</body>
+</html>

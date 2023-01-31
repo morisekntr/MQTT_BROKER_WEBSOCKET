@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+</head>
+<body>
+  <h1>MQTT Message</h1>
+  <form>
+    <label for="input">Subscribe Topic :</label>
+    <input type="text" id="input" name="input">
+    <button type="button" onclick="getSubTopic()">Submit</button>
+  </form>
+  <p id="display"></p>
+  <div id="message"></div>
+
+  <script>
+    // フォーム要素から値を取得
+    function getSubTopic() {
+      var sub_topic = document.getElementById("input").value;
+      // 取得した値を表示
+      document.getElementById("display").innerHTML = sub_topic;
+    }
+
+    // MQTTクライアントを作成
+    var client = new Paho.MQTT.Client("ws://localhost:1884", "clientId");
+
+    // 接続時の処理
+    client.onConnect = function() {
+      client.subscribe("test");
+      console.log("Connected to MQTT broker.");
+    };
+
+    // メッセージ受信時の処理
+    client.onMessageArrived = function(message) {
+      var msg = message.payloadString;
+      document.getElementById("message").innerHTML = msg;
+    };
+
+    // 接続
+    client.connect({onSuccess: client.onConnect});
+  </script>
+</body>
+</html>
