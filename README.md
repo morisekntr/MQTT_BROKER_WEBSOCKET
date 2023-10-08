@@ -1,7 +1,4 @@
 # MQTT_BROKER_WEBSOCKET
-## 作った理由
-
-- MQTTなるものを知ったのでpub/subの恩恵を受けたかった
 ## 機能
 
 - MQTTを使用したリアルタイムWEBチャットアプリ
